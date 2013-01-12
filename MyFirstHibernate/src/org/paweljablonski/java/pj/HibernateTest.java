@@ -26,6 +26,8 @@ public class HibernateTest {
 	session.beginTransaction();
 	session.save(user);
 	session.getTransaction().commit();
+	session.close();
+	
 	
 	}
 
