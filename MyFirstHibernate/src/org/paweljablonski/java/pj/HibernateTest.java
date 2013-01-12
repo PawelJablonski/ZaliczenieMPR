@@ -16,7 +16,6 @@ public class HibernateTest {
 		
 		UserDetails user = new UserDetails();
 		user.setUserAge(24);
-		user.setUserId(1);
 		user.setUserName("UserNo1");
 		user.setDateOfBought(new Date());
 		user.setDescription("Description of User 1");
@@ -28,6 +27,13 @@ public class HibernateTest {
 	session.getTransaction().commit();
 	session.close();
 	
+	user = null;
+	
+	session = sessionFactory.openSession();
+	session.beginTransaction();
+	user = (UserDetails) session.get(UserDetails.class, 1);
+	
+	System.out.println("Retrieved name from db: " + user.getUserName());
 	
 	}
 
